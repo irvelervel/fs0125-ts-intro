@@ -5,3 +5,48 @@ console.log('vediamo se compila da solo')
 // commento nuovo!
 console.log('ci siamo')
 // ts -> js -> html con liveserver
+
+// cosa possiamo fare in TS che NON possiamo fare in JS?
+// specificare i TIPI DI DATO
+// primitivi:
+// string, number, boolean, undefined, null, any
+
+let counter: number = 0 // <-- in TS si possono specificare i tipi con l'operatore :
+
+let student = 'Stefano'
+student = 'Mario'
+// student = 1 //  -> mi dà errore, perchè sto cercando di cambiare tipo!
+
+// i tipi di dato sulle variabili sono necessari, ma il più delle volte TS
+// riuscirà a DEDURRE automaticamente il tipo giusto (senza obbligarci a
+// specificarlo manualmente) grazie al VALORE della variabile
+// questa capacità di TS si chiama "TYPE INFERENCE"
+
+console.log(student.toLowerCase()) // suggerisce i metodi delle stringhe e segnala errori!
+student.slice(0, 1).toLowerCase() // anche in caso di metodi consecutivi
+
+let num: any = 15
+num = 'ciao'
+num = null
+// "any" è un tipo che accetta QUALUNQUE VALORE
+// stiamo "spegnendo" il controllo dei tipi di TS
+// ...a questo punto tanto valeva scrivere in JS
+// any NON andrebbe mai usato a meno di un fix temporaneo o quando non si conosce il
+// tipo di un dato, parametro etc. in attesa di risolverlo!
+
+// FUNZIONI
+const sayCiao = function () {
+  return 'Ciao!'
+}
+
+console.log(sayCiao().length) // 5
+
+const numero = function (): number {
+  return 10
+}
+
+const somma = function (num1: number, num2: number = 0) {
+  return num1 + num2
+}
+
+const risultato = somma(67, 33) // 100
