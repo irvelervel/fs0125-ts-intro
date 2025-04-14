@@ -159,3 +159,97 @@ class Pet {
 // però andrebbero indicati i TIPI nei parametri del constructor altrimenti rischiamo
 // di mescolari i valori
 const f = new Pet(true, 'fido', 5, 'shepard')
+
+interface HumanBeing {
+  firstName: string
+  lastName: string
+  age?: number
+  location: string
+  yearsOfExperience: number
+  drivingLicense: boolean
+}
+
+const person1: HumanBeing = {
+  firstName: 'Mario',
+  lastName: 'Bros',
+  age: 50,
+  location: 'New York',
+  yearsOfExperience: 30,
+  drivingLicense: true,
+}
+
+const person2: HumanBeing = {
+  firstName: 'Peach',
+  lastName: 'Toadstool',
+  location: 'Mushroom Kingdom',
+  yearsOfExperience: 0,
+  drivingLicense: true,
+}
+
+const marioCharacters: HumanBeing[] = []
+marioCharacters.push(person1)
+marioCharacters.push(person2)
+
+marioCharacters.forEach((p) => {
+  console.log(p.age?.toPrecision(2))
+  // il ? viene chiamato "optional chaining"
+  // serve a proseguire nel concatenamento dei metodi e proprietà solamente quando
+  // il valore prima di ? è "truthy" (cioè non è false, null, undefined)
+})
+
+interface TennisPlayer extends HumanBeing {
+  // mano preferita
+  favouriteHand: string
+  // n. di tornei vinti
+  tournamentsWon: number
+}
+
+// per agassi serviranno tutte le proprietà di HumanBeing unite a tutte le proprietà
+// aggiunte in TennisPlayer
+const agassi: TennisPlayer = {
+  firstName: 'Andre',
+  lastName: 'Agassi',
+  age: 54,
+  location: 'USA',
+  drivingLicense: true,
+  yearsOfExperience: 39,
+  favouriteHand: 'right',
+  tournamentsWon: +Infinity,
+}
+
+// GENERICS (type arguments)
+// un GENERIC in TS è un argomento per un TIPO.
+// servono a rendere più generiche le interfacce, in modo da poterle riutilizzare di più.
+
+interface AmericanArea {
+  country: string
+  state: string
+}
+
+interface Address<A> {
+  // A è un GENERIC, un parametro DI TIPO
+  street: string
+  civicNumber: number
+  city: string
+  zipCode: number
+  area: A // GENERIC
+}
+
+const italianAddress: Address<string> = {
+  city: 'Genova',
+  street: 'Corso Italia',
+  civicNumber: 50,
+  zipCode: 16100,
+  area: 'Liguria',
+}
+
+const americanAddress: Address<AmericanArea> = {
+  city: 'Seattle',
+  street: 'Columbia st',
+  civicNumber: 355,
+  zipCode: 9104,
+  area: {
+    country: 'USA',
+    state: 'Washington',
+  },
+}

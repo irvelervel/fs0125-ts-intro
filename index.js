@@ -113,3 +113,57 @@ var Pet = /** @class */ (function () {
 // però andrebbero indicati i TIPI nei parametri del constructor altrimenti rischiamo
 // di mescolari i valori
 var f = new Pet(true, 'fido', 5, 'shepard');
+var person1 = {
+    firstName: 'Mario',
+    lastName: 'Bros',
+    age: 50,
+    location: 'New York',
+    yearsOfExperience: 30,
+    drivingLicense: true,
+};
+var person2 = {
+    firstName: 'Peach',
+    lastName: 'Toadstool',
+    location: 'Mushroom Kingdom',
+    yearsOfExperience: 0,
+    drivingLicense: true,
+};
+var marioCharacters = [];
+marioCharacters.push(person1);
+marioCharacters.push(person2);
+marioCharacters.forEach(function (p) {
+    var _a;
+    console.log((_a = p.age) === null || _a === void 0 ? void 0 : _a.toPrecision(2));
+    // il ? viene chiamato "optional chaining"
+    // serve a proseguire nel concatenamento dei metodi e proprietà solamente quando
+    // il valore prima di ? è "truthy" (cioè non è false, null, undefined)
+});
+// per agassi serviranno tutte le proprietà di HumanBeing unite a tutte le proprietà
+// aggiunte in TennisPlayer
+var agassi = {
+    firstName: 'Andre',
+    lastName: 'Agassi',
+    age: 54,
+    location: 'USA',
+    drivingLicense: true,
+    yearsOfExperience: 39,
+    favouriteHand: 'right',
+    tournamentsWon: +Infinity,
+};
+var italianAddress = {
+    city: 'Genova',
+    street: 'Corso Italia',
+    civicNumber: 50,
+    zipCode: 16100,
+    area: 'Liguria',
+};
+var americanAddress = {
+    city: 'Seattle',
+    street: 'Columbia st',
+    civicNumber: 355,
+    zipCode: 9104,
+    area: {
+        country: 'USA',
+        state: 'Washington',
+    },
+};
